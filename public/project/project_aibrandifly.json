@@ -1,0 +1,12 @@
+{
+  "id": "3",
+  "domain_url": "https://www.aibrandifly.com/",
+  "projectId": "aibrandifly",
+  "themePrimary": "#6C6CF5",
+  "primaryBtnBg": "#6C6CF5",
+  "primaryBtnBgHover": "#5a5adc",
+  "kdBtnPrimaryBoxShadow": "0px 4px 60px 0px #6C6CF54D",
+  "kdBodyBgUrl": "https://kdmeditor.s3.us-east-1.amazonaws.com/kd_videoeditor/files/image/editor-bg.png",
+  "kdBodyBgColor":"#090a0a",
+  "kdThemeSubBg": "rgba(255,255,255,0.05)"
+}

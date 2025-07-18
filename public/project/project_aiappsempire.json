@@ -1,0 +1,8 @@
+{
+  "id": "3",
+  "domain_url": "https://www.aiappsempire.com/",
+  "projectId": "aiappsempire",
+  "themePrimary": "#fe2842",
+  "primaryBtnBg":"linear-gradient(92.54deg, #FF1451 0%, #FF3637 100%)",
+  "primaryBtnBgHover": "linear-gradient(92.54deg, #FF3637 0%, #FF1451 100%)"
+}
