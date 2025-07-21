@@ -38,6 +38,7 @@
     --kd-deep-light-bg: rgba(255, 255, 255, 0.05);
     --kd-timeline-clip-btn-bg: rgba(0, 0, 0, 0.6);
     --kd-theme-dark-text-color: rgba(0, 0, 0, 0.6);
+    --kd-theme-text-color: rgba(255, 255, 255, 0.6);
     --kd-timeline-clip-bg: #6b6cff;
     --kd-bg-light-10: rgba(255, 255, 255, 0.01);
 
@@ -265,7 +266,7 @@ select.kd-form-input {
 }
 /* Sidebar Items List */
 .sidebar {
-  padding: 15px 20px;
+  padding: 15px;
   background: var(--kd-theme-sub-bg);
   border-radius: 0px 10px 10px 0px;
   height: calc(100vh - 66px);

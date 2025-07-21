@@ -87,7 +87,7 @@ const TextToImage: React.FC = () => {
                     onChange={(e) => {
                         setText(e.target.value);
                         // value_update({ text: e.target.value });
-                    }} rows={3}
+                    }} rows={4}
                     className="kd-form-input"
                     placeholder="Type something..."
                 />
@@ -155,24 +155,45 @@ const TextToImage: React.FC = () => {
 
 
                 <div className="grid grid-cols-2 gap-2">
-                    {loading ? (
-                        <div className="col-span-2  text-center text-white">Loading images...</div>
-
-                    ) : (
-                        images.map((image, index) => (
-                            <div key={index} className="relative image-box-wrapper">
+                 
+                            <div  className="relative image-box-wrapper">
                                 <Image
-                                    src={image.src.large}
-                                    width={image.width}
-                                    height={image.height}
-                                    alt={`Image ${index}`}
+                                    src={""}
+                                    width={200}
+                                    height={200}
+                                    alt={`Image ${1}`}
                                     className="cursor-pointer"
                                 // onClick={() => createclpis(image.src.original)}
                                 // onLoadingComplete={handleImageLoad}
                                 />
                             </div>
-                        ))
-                    )}
+
+                              <div  className="relative image-box-wrapper">
+                                <Image
+                                    src={""}
+                                    width={200}
+                                    height={200}
+                                    alt={`Image ${1}`}
+                                    className="cursor-pointer"
+                                // onClick={() => createclpis(image.src.original)}
+                                // onLoadingComplete={handleImageLoad}
+                                />
+                            </div>
+                       
+
+                         <div  className="relative image-box-wrapper">
+                                <Image
+                                    src={""}
+                                    width={200}
+                                    height={200}
+                                    alt={`Image ${1}`}
+                                    className="cursor-pointer"
+                                // onClick={() => createclpis(image.src.original)}
+                                // onLoadingComplete={handleImageLoad}
+                                />
+                            </div>
+                       
+                       
                 </div>
 
 

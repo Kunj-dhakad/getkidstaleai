@@ -153,7 +153,7 @@ const TextToSpeech: React.FC = () => {
                     onChange={(e) => {
                         setText(e.target.value);
                         // value_update({ text: e.target.value });
-                    }} rows={3}
+                    }} rows={4}
                     className="kd-form-input"
                     placeholder="Type something..."
                 />
@@ -161,35 +161,37 @@ const TextToSpeech: React.FC = () => {
 
             {/* select voice */}
             <label className="theme-small-text mb-2">voice </label>
-            <div className="bg-[#1E293B] text-white p-2 rounded-xl shadow-lg border border-[#334155]">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1">
+            <div className="bg-[#1E293B] text-white rounded-md shadow-lg border border-[#334155]">
+                <div className="flex items-center justify-between border-b p-2 border-[#334155]">
+                    <div className="flex items-center gap-2">
                         <img
                             src="https://i.imgur.com/8Km9tLL.png"
                             alt="David"
-                            className="w-12 h-12 rounded-md object-cover"
+                            className="img-box object-cover"
                         />
-                        <div className="text-lg font-semibold">David</div>
+                        <div>
+                            <h6 className='mb-1'>David</h6>
+                            <div className="flex gap-1">
+                                {["Gender", "Text", "Work", "Accent"].map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="badge-tags"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-md font-medium">
+                    <span className="selected-tag">
                         Selected
                     </span>
                 </div>
 
 
-                <div className="mt-4 flex justify-between">
-                    {["Gender", "Text", "Work", "Accent"].map((tag) => (
-                        <span
-                            key={tag}
-                            className="bg-[#334155] text-sm px-2 py-1 rounded-md text-gray-300"
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
 
                 {/* Change Voice Button */}
-                <button onClick={() => { setModel(true) }} className="mt-4 w-full flex items-center justify-center gap-2 bg-[#0F172A] hover:bg-[#1e293b] text-gray-300 text-sm py-2 rounded-md transition border border-[#334155]">
+                <button onClick={() => { setModel(true) }} className="w-full flex items-center justify-center gap-2 text-gray-300 text-sm transition p-2">
                     <FaSyncAlt />
                     Change Voice
                 </button>

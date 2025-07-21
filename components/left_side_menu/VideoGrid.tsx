@@ -10,11 +10,11 @@ import { FaArrowLeft, FaArrowRight, FaSearch } from "react-icons/fa";
 import { MiddleSectionVisibleaction, settoolbarview } from "../../app/store/editorSetting";
 import { FaAngleLeft, } from "react-icons/fa6";
 
-const skey = process.env.KD_PEXEL_API_KEY;
-if (!skey) {
-  throw new Error("Pexels API key is not defined");
-}
-const client = createClient(skey);
+// const skey = process.env.KD_PEXEL_API_KEY;
+// if (!skey) {
+//   throw new Error("Pexels API key is not defined");
+// }
+const client = createClient("563492ad6f91700001000001058a23d1f89841b9ae8060ffd2b5abca");
 const VideoGrid: React.FC = () => {
 
   const playercurrentframe = useSelector(
