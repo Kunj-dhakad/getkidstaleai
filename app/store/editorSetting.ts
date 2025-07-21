@@ -25,7 +25,9 @@ interface editorSettingData { // Fixed typo
     | "Library"
     | "main_container_bg"
     |"TextToSpeech"
-    | "TextToImage";
+    | "TextToImage"
+    |"AiRhymes"
+    |"GenerativeAiLibrary";
     bgRemovingMap: { [videoId: string]: boolean };
     clipsplitRequested: boolean;
     RenderStatus: RenderStatus;
@@ -70,7 +72,7 @@ const editorTool = createSlice({
         },
 
         settoolbarview: (state, action: PayloadAction<string>) => {
-            if (["", "menu", "text", "texteditor", "image", "image_edit_tool", "video", "video_edit_tool", "emoji", "emoji_edit_tool", "audio", "audio_edit_tool", "upload", "template", "render_video_list", "heygen_video_list", "SaveDraft", "Library", "main_container_bg","TextToSpeech","TextToImage"].includes(action.payload)) {
+            if (["", "menu", "text", "texteditor", "image", "image_edit_tool", "video", "video_edit_tool", "emoji", "emoji_edit_tool", "audio", "audio_edit_tool", "upload", "template", "render_video_list", "heygen_video_list", "SaveDraft", "Library", "main_container_bg","TextToSpeech","AiRhymes" ,"TextToImage","GenerativeAiLibrary"].includes(action.payload)) {
                 state.toolbarview = action.payload as typeof state.toolbarview;
             } else {
                 console.error("Invalid toolbarview value:", action.payload);

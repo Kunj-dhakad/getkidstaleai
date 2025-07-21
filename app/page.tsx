@@ -34,51 +34,45 @@ import {
   BsPencilFill
 } from "react-icons/bs";
 
-// import { FullscreenButton } from "../components/editor/playercontroll/FullscreenButton";
-// import { LoopButton } from "../components/editor/playercontroll/LoopButton";
-// import { MuteButton } from "../components/editor/playercontroll/MuteButton";
 import { TimeDisplay } from "../components/editor/playercontroll/TimeDisplay";
-// import { VolumeSlider } from "../components/editor/playercontroll/VolumeSlider";
 import { PlayPauseButton } from "../components/editor/playercontroll/PlayPauseButton";
-// import { MdPermMedia } from "react-icons/md";
+import { MdInterests, MdPermMedia } from "react-icons/md";
 import UndoRedo from "../components/editor/playercontroll/undoRedp";
 
-// import { FaVideo, FaImage } from "react-icons/fa";
-// import {
-//   PiMagnifyingGlassMinusThin,
-//   PiMagnifyingGlassPlusThin,
-// } from "react-icons/pi";
-// import {
-//   BiUndo, BiRedo,
-//   //  BiSolidCloudUpload,
-//   // BiText
-// } from "react-icons/bi";
-// import { BsMusicNoteList } from "react-icons/bs";
-// import {
-//   //  MdInterests,
-//   MdTune
-// } from "react-icons/md";
-// import { ActionCreators } from "redux-undo";
+import { FaImage } from "react-icons/fa";
+
+import {
+
+  BiSolidCloudUpload,
+  BiText,
+  //  BiSolidCloudUpload,
+  // BiText
+} from "react-icons/bi";
+import { BsMusicNoteList } from "react-icons/bs";
+import {
+  //  MdInterests,
+
+} from "react-icons/md";
 import EmojiEditTool from "../components/editor/tool/emoji_edit_tool";
 import { updateProjectSettings } from "./store/project_settingsSlice ";
 import HeygenVideolist from "../components/left_side_menu/heygen_video_list";
 import RenderVideolist from "../components/left_side_menu/render_video_list";
 import AudioEditTool from "../components/editor/tool/audio_edit_tool";
-// import { MdDeleteSweep } from "react-icons/md";
-// import useInitializeWatermark from "../components/editor/tool/watermark_setup";
 import { useTemplateSet } from "../components/editor/tool/template_set_fun";
 import { useVideoAddHelper } from "../components/editor/helper/video_add_helper";
 import SaveDraft from "../components/left_side_menu/saveDraft";
 import { FaMagnifyingGlassMinus, FaMagnifyingGlassPlus } from "react-icons/fa6";
-import { FaCheck, FaTimes } from "react-icons/fa";
+import { FaAngleLeft, FaCheck, FaTimes } from "react-icons/fa";
 import Library from "../components/left_side_menu/library";
 import SetupPopup from "../components/editor/tool/setupPopup";
 // import { sendToastToParent } from "../components/editor/helper/sendToastToParent";
 import { useClipDuplicateHelper } from "../components/editor/helper/clip_dublicate_helper";
 import MainContainerBg from "../components/left_side_menu/main_container_bg";
 import { LuSquareSplitHorizontal } from 'react-icons/lu';
-import TextToSpeech from "../components/left_side_menu/TextToSpeech";
-import TextToImage from "../components/left_side_menu/TextToImage";
+import TextToSpeech from "../components/left_side_menu/GenAi/TextToSpeech";
+import TextToImage from "../components/left_side_menu/GenAi/TextToImage";
+import GenerativeAiLibrary from "../components/left_side_menu/GenerativeAiLibrary";
+import AiRhymes from "../components/left_side_menu/GenAi/AiRhymes";
 
 
 const Home: NextPage = () => {
@@ -532,94 +526,85 @@ const Home: NextPage = () => {
 
 
         {/* side nav  */}
-        {/* <div className="sidebar-menu">
-           <div className="sidebar-head flex items-center gap-2">
+        <div className="sidebar-menu">
+          <div className="sidebar-head flex items-center gap-2">
             <div className="back-btn text-white">
               <FaAngleLeft />
             </div>
-            <div className="sidebar-logo">
+            {/* <div className="sidebar-logo">
               <Image
                 src={"https://www.aivideocreatorfx.in/app/assets/images/Ai-Employee-Favicon.png"}
                 width={200}
                 height={200}
                 alt={"logo"}
               />
-            </div>
+            </div> */}
           </div>
 
           <div className="sidebar-items-list">
-            <div className="sidebar-items">
-              <button
-                onClick={() => setView("menu")}
-                className="items-link"
-              >
-                <MdTune className="" style={{ color: "white" }} />
-                <span className="item-text">Setup</span>
-              </button>
-            </div>
 
             <div className="sidebar-items">
               <button
-                onClick={() => setView("template")}
+                onClick={() => dispatch(settoolbarview("template"))}
                 className="items-link"
               >
                 <MdPermMedia className="text-white" />
-                <span className="item-text">Media</span>
+                <span className="item-text">template</span>
               </button>
             </div>
 
             <div className="sidebar-items">
               <button
-                onClick={() => setView("upload")}
+                onClick={() => dispatch(settoolbarview("upload"))}
                 className="items-link"
               >
                 <BiSolidCloudUpload className="text-white" />
-                <span className="item-text">Setup</span>
+                <span className="item-text">upload</span>
               </button>
             </div>
             <div className="sidebar-items">
               <button
-                onClick={() => setView("text")}
+                onClick={() => dispatch(settoolbarview("text"))}
                 className="items-link"
               >
                 <BiText className="" style={{ color: "white" }} />
-                <span className="item-text">Setup</span>
+                <span className="item-text">text</span>
               </button>
             </div>
 
             <div className="sidebar-items">
               <button
-                onClick={() => setView("image")}
+                onClick={() => dispatch(settoolbarview("Library"))}
                 className="items-link"
               >
                 <FaImage style={{ color: "white" }} />
-                <span className="item-text">Setup</span>
+                <span className="item-text">Library</span>
               </button>
             </div>
 
             <div className="sidebar-items">
               <button
-                onClick={() => setView("video")}
+                onClick={() => dispatch(settoolbarview("GenerativeAiLibrary"))}
                 className="items-link"
               >
-                <FaVideo className="text-white" />
-                <span className="item-text">Setup</span>
+                <FaImage style={{ color: "white" }} />
+                <span className="item-text">Gen Ai.</span>
               </button>
             </div>
 
             <div className="sidebar-items">
               <button
-                onClick={() => setView("emoji")}
+                onClick={() => dispatch(settoolbarview("emoji"))}
                 className="items-link"
               >
                 <MdInterests className="text-white" />
-                <span className="item-text">Setup</span>
+                <span className="item-text">Elements</span>
               </button>
             </div>
 
             <div className="sidebar-items">
               <button
-                onClick={() => setView("audio")}
+                onClick={() => dispatch(settoolbarview("audio"))}
                 className="items-link"
               >
                 <BsMusicNoteList className="text-white" />
@@ -627,8 +612,8 @@ const Home: NextPage = () => {
               </button>
             </div>
 
-          </div> 
-        </div> */}
+          </div>
+        </div>
 
 
         {/* main pgae start  */}
@@ -796,9 +781,11 @@ const Home: NextPage = () => {
               {toolbarview === "Library" && (<Library />)}
               {toolbarview === "SaveDraft" && (<SaveDraft />)}
               {toolbarview === "main_container_bg" && (<MainContainerBg />)}
+             
               {toolbarview === "TextToSpeech" && (<TextToSpeech />)}
               {toolbarview === "TextToImage" && (<TextToImage />)}
-
+              {toolbarview === "GenerativeAiLibrary" && (<GenerativeAiLibrary />)}
+              {toolbarview === "AiRhymes" && (<AiRhymes />)}
             </div>
 
             {/* editor view (canwas ,button bar ,timeline) start */}

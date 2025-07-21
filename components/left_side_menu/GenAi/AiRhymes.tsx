@@ -1,16 +1,14 @@
-
-
 import React, { useEffect, useRef, useState } from 'react';
-import { FaAngleLeft } from 'react-icons/fa';
+import { FaAngleLeft, FaSyncAlt } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
-import { MiddleSectionVisibleaction, settoolbarview } from '../../app/store/editorSetting';
+import { MiddleSectionVisibleaction, settoolbarview } from '../../../app/store/editorSetting';
 import Image from "next/image";
 import {
     FaPlay, FaPause,
     // FaPlus
 } from 'react-icons/fa';
-import { addClip, AudioClip, } from '../../app/store/clipsSlice';
-import { RootState } from '../../app/store/store';
+import { addClip, AudioClip, } from '../../../app/store/clipsSlice';
+import { RootState } from '../../../app/store/store';
 
 
 interface StockAudio {
@@ -18,16 +16,12 @@ interface StockAudio {
     url: string;
     duration: number;
     title: string;
-    // src: string;
 }
-const TextToImage: React.FC = () => {
+const AiRhymes: React.FC = () => {
 
     const [text, setText] = useState('');
-    const [language, setLanguage] = useState('en');
-    const [voiceType, setVoiceType] = useState('female');
     const [playing, setPlaying] = useState<string | null>(null);
     const audioRefs = useRef<{ [key: string]: HTMLAudioElement | null }>({});
-    // const [reLoadinglist, setreLoadinglist] = useState(false);
     const [loading, setLoading] = useState<boolean>(true);
     const playercurrentframe = useSelector(
         (state: RootState) => state.slices.present.playertotalframe
@@ -113,19 +107,25 @@ const TextToImage: React.FC = () => {
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     };
 
+
+    // model code 
+
+    const [model, setModel] = useState(false);
+    const [modeltap, setModeltap] = useState<"AiVoice" | "CloneVoice">("AiVoice");
+
     return (
         <div className="kd-editor-panel">
-            <div className="kd-editor-head flex items-center justify-between text-white mb-4">
+            <div className="kd-editor-head flex items-center justify-between text-white mb-2">
 
                 <div className='flex items-center '>
 
                     <button
-                        onClick={() => toolbarviewset("Library")} className="toggle-icon"
+                        onClick={() => toolbarviewset("GenerativeAiLibrary")} className="toggle-icon"
                     >
                         <FaAngleLeft />
                     </button>
 
-                    <p className="ms-1 left-text">Text To Speech</p>
+                    <p className="ms-1 left-text">Ai Rhymes</p>
                 </div>
 
 
@@ -143,9 +143,9 @@ const TextToImage: React.FC = () => {
 
             {/* Text Input Field */}
 
-            <div className="mb-4">
+            <div >
                 <label className="theme-small-text mb-2">
-                    Enter Text
+                    Write a Text
                 </label>
                 <textarea
                     value={text}
@@ -160,49 +160,16 @@ const TextToImage: React.FC = () => {
 
 
 
-            {/* Language Selector */}
-
-            <div className="mb-4">
-                <label className="theme-small-text mb-2">
-                    Select Language
-                </label>
-                <select
-                    className="kd-form-input"
-                    value={language}
-                    onChange={(e) => {
-                        setLanguage(e.target.value);
-                        // value_update({ fontFamily: e.target.value });
-                    }}
-                >
-                    <option value="en">English</option>
-                    <option value="hi">Hindi</option>
-                    <option value="es">Spanish</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                </select>
-            </div>
-
-
-
-            {/* Voice Type Selector */}
-            <div className="mb-4">
-                <label className="theme-small-text mb-2">
-                    Select Voice Type
-                </label>
-                <select
-                    className="kd-form-input"
-                    value={voiceType}
-                    onChange={(e) => setVoiceType(e.target.value)}
-                >
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                </select>
-            </div>
-
-            {/* Play Button */}
+            {/* Generate Audio button */}
+            <button className="my-2 w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-gray-300 text-sm py-2 rounded-md transition border border-[#334155]">
+                <FaSyncAlt />
+                Generate Audio
+            </button>
 
             <div className="p-2">
-
+                <label className="theme-small-text mb-2">
+                  Recent Audio 
+                </label>
                 {loading ? (
                     <div className="flex justify-center items-center h-64">
                         <div className="loader kd-white-color">Loading...</div>
@@ -246,10 +213,9 @@ const TextToImage: React.FC = () => {
                         <p className="kd-white-color text-lg">No audio found</p>
                     </div>
                 )}
-
             </div>
         </div>
     );
 };
 
-export default TextToImage;
+export default AiRhymes;
