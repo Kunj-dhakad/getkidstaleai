@@ -10,10 +10,10 @@ import { RootState } from '../../../app/store/store';
 const TextToImage: React.FC = () => {
 
     const [text, setText] = useState('');
-    const [images, setImages] = useState<any[]>([]);
+    // const [images, setImages] = useState<any[]>([]);
 
     // const [reLoadinglist, setreLoadinglist] = useState(false);
-    const [loading, setLoading] = useState<boolean>(true);
+    // const [loading, setLoading] = useState<boolean>(true);
 
     const dispatch = useDispatch();
     const toolbarviewset = (view: string) => {
@@ -38,11 +38,12 @@ const TextToImage: React.FC = () => {
                     body: formdata,
                 });
                 const data = await response.json();
-                setImages(data);
+                // setImages(data);
+                console.log(data)
             } catch {
                 console.error("erroe data not fetched")
             } finally {
-                setLoading(false);
+                // setLoading(false);
             }
         }
         fetchdata()

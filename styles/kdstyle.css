@@ -503,35 +503,3 @@
     font-weight: 400;
     font-style: normal;
 }
-
-.img-box{
-    width: 55px;
-    height: 55px;
-    border-radius: 5px;
-}
-
-.selected-tag{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2px 8px;
-    gap: 16px;
-    width: 60px;
-    background: var(--kd-theme-primary);
-    border-radius: 3px;
-    font-size: 10px;
-    font-weight: 400;
-    align-self: flex-start;
-}
-
-.badge-tags{
-    font-size: 10px;
-    font-weight: 400;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px 8px;
-    color: var(--kd-theme-text-color);
-    background: var(--kd-deep-light-bg);
-}

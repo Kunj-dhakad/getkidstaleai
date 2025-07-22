@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaAngleLeft, FaSyncAlt } from 'react-icons/fa';
+import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { MiddleSectionVisibleaction, settoolbarview } from '../../../app/store/editorSetting';
 import Image from "next/image";
@@ -256,32 +257,31 @@ const TextToSpeech: React.FC = () => {
             {/* popup model start */}
             {model && (
                 <>
-                    <div className="fixed inset-0 bg-black bg-opacity-90 z-40"></div>
+                    <div className="fixed inset-0 bg-black bg-opacity-90 z-40" 
+                        style={{
+                            backdropFilter: "blur(8px)",
+                        }}
+                    ></div>
                     {/* Popup Box */}
-                    <div
-                        className="fixed shadow-lg z-50"
+                    
+                    <div className="fixed z-50" 
                         style={{
                             top: "50%",
                             left: "50%",
                             transform: "translate(-50%, -50%)",
                         }}
                     >
-
-                        <div className="w-full p-2 max-w-5xl mx-auto bg-[#111827] rounded-xl shadow-xl text-white">
-
-
+                        <div className='voice-wrapper'>
                             <div className="flex justify-between items-center mb-4">
-
-                                <div className="flex space-x-2">
-                                    <button onClick={() => setModeltap("AiVoice")} className="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium">All Voice</button>
-                                    <button onClick={() => setModeltap("CloneVoice")} className="px-4 py-2 rounded-lg bg-[#1f2937] text-gray-300">Clone Voice</button>
+                                <div className="nav-wrapper">
+                                    <button onClick={() => setModeltap("AiVoice")} className="nav-button active">All Voice</button>
+                                    <button onClick={() => setModeltap("CloneVoice")} className="nav-button">Clone Voice</button>
                                 </div>
 
-                                <button className="px-4 py-2 rounded-lg bg-[#0F172A] text-white" onClick={() => setModel(false)}>
-                                    Close
+                                <button className="text-white closeBtn" onClick={() => setModel(false)}>
+                                    <MdClose />
                                 </button>
                             </div>
-
                             {modeltap === "AiVoice" && (
                                 <div>
                                     {/* Filters */}
@@ -300,105 +300,55 @@ const TextToSpeech: React.FC = () => {
                                     </div>
 
                                     {/* Voice Cards */}
-                                    <div className="grid grid-cols-2  gap-4">
-                                        <div className="bg-[#1e293b] text-white gap-2 rounded-xl p-2 flex items-center">
-                                            <img
-                                                src="https://i.pravatar.cc/80?img=1"
-                                                alt="Profile"
-                                                className="w-10 h-10 rounded-lg object-cover"
-                                            />
-                                            <div>
-                                                <h2 className="text-sm font-semibold">Jaime</h2>
-                                                <div className="flex gap-2 mt-2">
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Gender</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Text</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Work</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Accent</span>
+                                    <div className="grid grid-cols-2 gap-3 scroll-bx-wrapper">
+                                        <div className="voice-bx active">
+                                            <div className="voice-img-wrapper">
+                                                <img src="https://i.pravatar.cc/80?img=1" alt="Profile"/>
+                                            </div>
+                                            <div className="voice-info">
+                                                <h2 className="name">Jaime</h2>
+                                                <div className="voice-tags">
+                                                    <span className="badge-tags">Gender</span>
+                                                    <span className="badge-tags">Text</span>
+                                                    <span className="badge-tags">Work</span>
+                                                    <span className="badge-tags">Accent</span>
                                                 </div>
                                             </div>
+                                            <div className="selected-badge">Selected</div>
                                         </div>
-                                        <div className="bg-[#1e293b] text-white gap-2 rounded-xl p-2 flex items-center">
-                                            <img
-                                                src="https://i.pravatar.cc/80?img=1"
-                                                alt="Profile"
-                                                className="w-10 h-10 rounded-lg object-cover"
-                                            />
-                                            <div>
-                                                <h2 className="text-sm font-semibold">Jaime</h2>
-                                                <div className="flex gap-2 mt-2">
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Gender</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Text</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Work</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Accent</span>
+                                        <div className="voice-bx">
+                                            <div className="voice-img-wrapper">
+                                                <img src="https://i.pravatar.cc/80?img=1" alt="Profile"/>
+                                            </div>
+                                            <div className="voice-info">
+                                                <h2 className="name">Jaime</h2>
+                                                <div className="voice-tags">
+                                                    <span className="badge-tags">Gender</span>
+                                                    <span className="badge-tags">Text</span>
+                                                    <span className="badge-tags">Work</span>
+                                                    <span className="badge-tags">Accent</span>
                                                 </div>
                                             </div>
-                                        </div><div className="bg-[#1e293b] text-white gap-2 rounded-xl p-2 flex items-center">
-                                            <img
-                                                src="https://i.pravatar.cc/80?img=1"
-                                                alt="Profile"
-                                                className="w-10 h-10 rounded-lg object-cover"
-                                            />
-                                            <div>
-                                                <h2 className="text-sm font-semibold">Jaime</h2>
-                                                <div className="flex gap-2 mt-2">
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Gender</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Text</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Work</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Accent</span>
-                                                </div>
-                                            </div>
-                                        </div><div className="bg-[#1e293b] text-white gap-2 rounded-xl p-2 flex items-center">
-                                            <img
-                                                src="https://i.pravatar.cc/80?img=1"
-                                                alt="Profile"
-                                                className="w-10 h-10 rounded-lg object-cover"
-                                            />
-                                            <div>
-                                                <h2 className="text-sm font-semibold">Jaime</h2>
-                                                <div className="flex gap-2 mt-2">
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Gender</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Text</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Work</span>
-                                                    <span className="bg-gray-700 px-3 py-1 rounded-full text-xs">Accent</span>
-                                                </div>
-                                            </div>
+                                            <div className="selected-badge">Selected</div>
                                         </div>
                                     </div>
                                 </div>
                             )}
-
                             {modeltap === "CloneVoice" && (
-                                <div>
-                                    <div className="w-full max-w-xl mx-auto mt-10">
-                                        <div
-                                            className="relative flex flex-col items-center justify-center h-72 border-2 border-dashed border-gray-600 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 text-white text-center px-6"
-                                        >
-                                           
-                                            <div className="absolute inset-0 pointer-events-none">
-                                                <div className="absolute left-1/2 top-0 h-full w-px bg-blue-500 opacity-30"></div>
-                                                <div className="absolute top-1/2 left-0 w-full h-px bg-blue-500 opacity-30"></div>
-                                            </div>
-
-                                           
-                                            <div className="mb-4">
-                                                
-                                                <svg className="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M4 10h2v4H4v-4zm3-3h2v10H7V7zm3 4h2v2h-2v-2zm3-6h2v14h-2V5zm3 3h2v8h-2V8zm3 2h2v4h-2v-4z" />
-                                                </svg>
-                                            </div>
-                                
-                                            <p className="font-semibold">Drag & Drop or Upload Audio Here</p>
-                                            <p className="text-sm text-gray-400 mt-1">
-                                                Upload Voice File (<span className="text-blue-400">MP3/WAV</span>) – Minimum 5 seconds, Maximum 30 seconds
-                                            </p>
+                                <div className="clone-voice-wrapper">
+                                    <div className="inner-content">
+                                        <div className="icon">
+                                           <svg width="99" height="80" viewBox="0 0 99 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M94.7631 57.0376C92.8784 57.0376 91.3497 55.5089 91.3497 53.6243V26.3172C91.3497 24.4326 92.8784 22.9038 94.7631 22.9038C96.6477 22.9038 98.1764 24.4326 98.1764 26.3172V53.6243C98.1764 55.5089 96.6477 57.0376 94.7631 57.0376ZM83.0051 62.7266V17.2149C83.0051 15.3302 81.4764 13.8015 79.5917 13.8015C77.7071 13.8015 76.1783 15.3302 76.1783 17.2149V62.7266C76.1783 64.6113 77.7071 66.14 79.5917 66.14C81.4764 66.14 83.0051 64.6113 83.0051 62.7266ZM67.836 49.0731V30.8684C67.836 28.9837 66.3073 27.455 64.4226 27.455C62.538 27.455 61.0093 28.9837 61.0093 30.8684V49.0731C61.0093 50.9577 62.538 52.4865 64.4226 52.4865C66.3073 52.4865 67.836 50.9577 67.836 49.0731ZM52.6647 67.2778V12.6637C52.6647 10.779 51.1359 9.2503 49.2513 9.2503C47.3667 9.2503 45.8379 10.779 45.8379 12.6637V67.2778C45.8379 69.1624 47.3667 70.6912 49.2513 70.6912C51.1359 70.6912 52.6647 69.1624 52.6647 67.2778ZM37.4933 76.3801V3.56133C37.4933 1.67669 35.9646 0.147949 34.08 0.147949C32.1953 0.147949 30.6666 1.67669 30.6666 3.56133V76.3801C30.6666 78.2648 32.1953 79.7935 34.08 79.7935C35.9646 79.7935 37.4933 78.2648 37.4933 76.3801ZM22.3243 58.1754V21.766C22.3243 19.8814 20.7955 18.3527 18.9109 18.3527C17.0263 18.3527 15.4975 19.8814 15.4975 21.766V58.1754C15.4975 60.0601 17.0263 61.5888 18.9109 61.5888C20.7955 61.5888 22.3243 60.0601 22.3243 58.1754ZM7.15293 53.6243V26.3172C7.15293 24.4326 5.62419 22.9038 3.73955 22.9038C1.85491 22.9038 0.326172 24.4326 0.326172 26.3172V53.6243C0.326172 55.5089 1.85491 57.0376 3.73955 57.0376C5.62419 57.0376 7.15293 55.5089 7.15293 53.6243Z" fill="white" fill-opacity="0.15"/>
+                                            </svg>
+                                        </div>
+                                        <div className="info">
+                                            <h6>Drag & Drop or Upload Audio Here</h6>
+                                            <p>Upload Voice File (MP3/WAV) - Minimum 5 Seconds, Maximum 30 seconds</p>
                                         </div>
                                     </div>
-
                                 </div>
-
                             )}
-
-
                         </div>
                     </div>
 
