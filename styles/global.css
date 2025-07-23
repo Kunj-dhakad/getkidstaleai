@@ -1150,10 +1150,10 @@ textarea.kd-form-input {
 
 .scroll-bx-wrapper{
   overflow: hidden;
-  max-height: 315px;
+  max-height: 310px;
   overflow-y: auto;
   overflow-x: hidden;
-  min-height: 315px;
+  min-height: 310px;
 }
 .scroll-bx-wrapper::-webkit-scrollbar {
   display: none;
@@ -1199,6 +1199,7 @@ textarea.kd-form-input {
 .voice-bx .voice-img-wrapper {
   position: relative;
   width: 55px;
+  min-width: 55px;
   height: 55px;
 }
 
@@ -1226,6 +1227,7 @@ textarea.kd-form-input {
   display: flex;
   align-items: center;
   gap: 5px;
+  flex-wrap: wrap;
 }
 
 .voice-bx .voice-info .voice-tags .tag {
@@ -1267,12 +1269,14 @@ textarea.kd-form-input {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  height: 375px;
   .inner-content{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    gap: 15px;
   }
   .info{
     color: #fff;
